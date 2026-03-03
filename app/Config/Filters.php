@@ -33,11 +33,11 @@ class Filters extends BaseFilters
 
     public array $required = [
         'before' => [
-            'forcehttps',
-            'pagecache',
+            // 'forcehttps', // Disabled — causes redirect loop on HTTP (localhost)
+            // 'pagecache',  // Disabled — not configured, adds overhead
         ],
         'after' => [
-            'pagecache',
+            // 'pagecache',  // Disabled — not configured
             'performance',
             'toolbar',
         ],

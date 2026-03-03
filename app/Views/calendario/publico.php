@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendario de Laboratorios — TECNM Campus Teziutlán</title>
     <meta name="description" content="Consulta la disponibilidad de laboratorios académicos del TECNM Teziutlán en tiempo real">
+    <!-- Preconnect + DNS prefetch -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -60,9 +66,8 @@
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .header-inner {
-            max-width: 1200px; margin: 0 auto;
             display: flex; justify-content: space-between; align-items: center;
-            padding: 10px 24px;
+            padding: 10px 40px;
         }
         .brand { display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; }
         .brand-icon {
@@ -171,6 +176,9 @@
         .fc .fc-button-primary:hover { transform: translateY(-1px) !important; box-shadow: 0 4px 12px rgba(26,122,76,0.3) !important; }
         .fc .fc-button-primary:not(:disabled).fc-button-active,
         .fc .fc-button-primary:not(:disabled):active { background: linear-gradient(135deg, #0d4a2b, var(--tecnm-green-dark)) !important; }
+        .fc .fc-button-group { gap: 4px; }
+        .fc .fc-toolbar { gap: 12px; flex-wrap: wrap; }
+        .fc .fc-button-group > .fc-button { margin-left: 0 !important; }
 
         .fc .fc-col-header-cell { background: #f5f8f6 !important; border-color: #eef2f0 !important; }
         .fc .fc-col-header-cell-cushion {
@@ -275,7 +283,7 @@
         <div class="info-stats">
             <div class="info-stat">
                 <i class="bi bi-clock-fill"></i>
-                <span>Lun — Vie · 7:00 AM — 4:00 PM</span>
+                <span>Lun — Sáb · 7:00 AM — 4:00 PM</span>
             </div>
             <div class="info-stat">
                 <i class="bi bi-check-circle-fill"></i>
@@ -318,7 +326,7 @@
         <p>&copy; <?= date('Y') ?> LabControl — Tecnológico Nacional de México, Campus Teziutlán, Puebla</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -346,7 +354,7 @@
                 new bootstrap.Modal(document.getElementById('eventModal')).show();
             },
             height: 'auto', navLinks: true, editable: false, dayMaxEvents: 3, firstDay: 1,
-            businessHours: { daysOfWeek: [1,2,3,4,5], startTime: '07:00', endTime: '16:00' },
+            businessHours: { daysOfWeek: [1,2,3,4,5,6], startTime: '07:00', endTime: '16:00' },
             moreLinkText: 'más',
         });
         calendar.render();

@@ -40,14 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
         el.style.animationDelay = `${i * 0.05}s`;
     });
 
-    // ── Active nav link highlighting ────────────
-    const currentPath = window.location.pathname;
-    document.querySelectorAll('.nav-link').forEach(link => {
-        const href = link.getAttribute('href');
-        if (href && currentPath.startsWith(href) && href !== '/') {
-            link.classList.add('active');
-        }
-    });
+    // Active nav link highlighting is handled server-side in sidebar.php
+    // (removed JS-based highlighting to avoid double-matching with startsWith)
 
     // ── Number counter animation ────────────────
     document.querySelectorAll('.stat-value').forEach(el => {

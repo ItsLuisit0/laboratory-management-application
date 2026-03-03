@@ -58,37 +58,54 @@
             </div>
 
             <?php if (!empty($r['contenido'])): ?>
-            <div class="row g-3">
+            <hr class="text-muted opacity-25 my-4">
+            <h5 class="fw-bold mb-3 text-primary"><i class="bi bi-journal-check me-2"></i>Detalles de la Práctica</h5>
+            <div class="row g-4 mb-2">
                 <div class="col-md-6">
-                    <div class="p-3 bg-light rounded border-start border-4 border-primary">
-                        <h6 class="fw-bold mb-2"><i class="bi bi-journal-text me-1"></i>Contenido de la Práctica</h6>
-                        <p class="mb-0"><?= nl2br(esc($r['contenido'])) ?></p>
+                    <div class="h-100 p-4 bg-white rounded shadow-sm border-top border-4 border-primary">
+                        <h6 class="fw-bold text-uppercase text-muted mb-3 fs-7" style="letter-spacing: 0.5px;">Contenido</h6>
+                        <p class="mb-0 text-dark" style="line-height: 1.6;"><?= nl2br(esc($r['contenido'])) ?></p>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="p-3 bg-light rounded border-start border-4 border-info">
-                        <h6 class="fw-bold mb-2"><i class="bi bi-tools me-1"></i>Requerimientos / Materiales</h6>
-                        <p class="mb-0"><?= !empty($r['requerimientos']) ? nl2br(esc($r['requerimientos'])) : '<span class="text-muted">Sin requerimientos especificados</span>' ?></p>
+                    <div class="h-100 p-4 bg-white rounded shadow-sm border-top border-4 border-info">
+                        <h6 class="fw-bold text-uppercase text-muted mb-3 fs-7" style="letter-spacing: 0.5px;">Requerimientos / Materiales</h6>
+                        <?php if (!empty($r['requerimientos'])): ?>
+                            <p class="mb-0 text-dark" style="line-height: 1.6;"><?= nl2br(esc($r['requerimientos'])) ?></p>
+                        <?php else: ?>
+                            <div class="d-flex align-items-center text-muted h-100">
+                                <em><i class="bi bi-dash-circle me-1"></i> Sin requerimientos adicionales</em>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
             <?php else: ?>
-            <div class="alert alert-light border mb-0">
-                <i class="bi bi-info-circle me-1"></i> El solicitante no proporcionó información de la práctica.
+            <hr class="text-muted opacity-25 my-4">
+            <div class="alert alert-warning border-0 shadow-sm mb-2 d-flex align-items-center">
+                <i class="bi bi-exclamation-triangle-fill fs-3 me-3 text-warning"></i>
+                <div>
+                    <h6 class="fw-bold mb-1">Falta Información de Práctica</h6>
+                    <p class="mb-0 text-muted small">El docente no adjuntó contenido ni requerimientos para esta solicitud.</p>
+                </div>
             </div>
             <?php endif; ?>
         </div>
-        <div class="card-footer d-flex justify-content-end gap-2">
-            <form action="/reservas/aprobar/<?= $r['id_reserva'] ?>" method="post" data-confirm="¿Aprobar esta solicitud de reserva? El docente será notificado.">
-                <button class="btn btn-success" type="submit">
-                    <i class="bi bi-check-lg me-1"></i> Aprobar
-                </button>
-            </form>
-            <form action="/reservas/rechazar/<?= $r['id_reserva'] ?>" method="post" data-confirm="¿Rechazar esta solicitud de reserva? El docente será notificado.">
-                <button class="btn btn-danger" type="submit">
-                    <i class="bi bi-x-lg me-1"></i> Rechazar
-                </button>
-            </form>
+        
+        <div class="card-footer bg-light p-3 d-flex justify-content-between align-items-center border-top-0">
+            <span class="text-muted small"><i class="bi bi-info-circle me-1"></i> Revisa los detalles antes de tomar una decisión.</span>
+            <div class="d-flex gap-2">
+                <form action="/reservas/rechazar/<?= $r['id_reserva'] ?>" method="post" data-confirm="¿Estás seguro de RECHAZAR esta solicitud?">
+                    <button class="btn btn-outline-danger px-4 fw-bold" type="submit">
+                        <i class="bi bi-x-circle me-1"></i> Rechazar
+                    </button>
+                </form>
+                <form action="/reservas/aprobar/<?= $r['id_reserva'] ?>" method="post" data-confirm="¿Estás seguro de APROBAR esta solicitud? El horario se reservará oficialmente.">
+                    <button class="btn btn-success px-4 fw-bold shadow-sm" type="submit">
+                        <i class="bi bi-check-circle me-1"></i> Aprobar Reserva
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
     <?php endforeach; ?>

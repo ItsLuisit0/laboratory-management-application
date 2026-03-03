@@ -46,6 +46,7 @@ class ReservaController extends BaseController
             'title'        => 'Solicitar Reserva',
             'laboratorios' => $this->laboratorioModel->getDropdown(),
             'user'         => session()->get('user'),
+            'loadFlatpickr'=> true,
         ];
         return view('reservas/create', $data);
     }
@@ -102,6 +103,7 @@ class ReservaController extends BaseController
                 'fecha_conflicto'      => $fecha,
                 'horarios_disponibles' => $horariosDisponibles,
                 'dias_disponibles'     => $diasDisponibles,
+                'loadFlatpickr'        => true,
             ];
 
             // Preserve old input

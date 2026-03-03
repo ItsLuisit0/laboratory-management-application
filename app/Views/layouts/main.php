@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= esc($title ?? 'LabControl') ?> — LabControl</title>
 
-    <!-- Preconnect to external CDN origins for faster resource loading -->
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <!-- Preconnect + DNS prefetch for faster resource loading -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+    <!-- Google Fonts (loaded here instead of CSS @import to avoid render-blocking) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
@@ -23,7 +26,7 @@
         <link href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/themes/airbnb.css" rel="stylesheet">
     <?php endif; ?>
-    <!-- Custom Styles (includes Google Fonts via @import) -->
+    <!-- Custom Styles -->
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
@@ -91,8 +94,8 @@
         <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/l10n/es.js"></script>
     <?php endif; ?>
-    <!-- Custom JS -->
-    <script src="/assets/js/app.js"></script>
+    <!-- Custom JS (defer OK — uses DOMContentLoaded internally) -->
+    <script src="/assets/js/app.js" defer></script>
     <?= $this->renderSection('scripts') ?>
 </body>
 </html>

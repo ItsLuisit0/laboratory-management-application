@@ -107,12 +107,7 @@ function isActive(string $path, string $current): string {
                     <span>Historial de Reservas</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="/practicas" class="nav-link <?= isActive('practicas', $currentPath) ?>">
-                    <i class="bi bi-journal-text"></i>
-                    <span>Prácticas</span>
-                </a>
-            </li>
+
             <li class="nav-section">Vista</li>
             <li class="nav-item">
                 <a href="/calendario" class="nav-link <?= isActive('calendario', $currentPath) ?>">
