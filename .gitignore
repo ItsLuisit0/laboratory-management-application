@@ -124,3 +124,9 @@ _modules/*
 
 /results/
 /phpunit*.xml
+
+#-------------------------
+# Test/Debug Scripts Temporales
+#-------------------------
+test_*.php
+debug_*.php
