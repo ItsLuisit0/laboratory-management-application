@@ -48,20 +48,30 @@
                     </div>
                     
                     <div class="mb-3 text-start">
-                        <button type="submit" class="btn btn-primary px-4 py-1" style="background-color: #0f6cb6; border-color: #0f6cb6; border-radius: 8px; font-weight: normal; font-size: 0.85rem;">
+                        <button type="submit" class="btn btn-primary px-4 py-1" style="background-color: #0f6cb6; border-color: #0f6cb6; border-radius: 4px; font-weight: normal; font-size: 0.85rem;">
                             Acceder
                         </button>
                     </div>
 
                     <div class="mb-4 text-start">
-                        <a href="#" style="font-size: 0.85rem; color: #0f6cb6; text-decoration: none;">¿Olvidó su contraseña?</a>
+                        <a href="#" style="font-size: 0.8rem; color: #0f6cb6; text-decoration: none;">¿Olvidó su contraseña?</a>
+                    </div>
+                    
+                    <hr style="border-top: 1px solid #dee2e6; margin: 1.5rem 0;">
+                    
+                    <div class="mb-4 text-start">
+                        <h6 style="font-weight: 700; font-size: 0.9rem; color: #212529; margin-bottom: 0.5rem;">Consulta de laboratorios</h6>
+                        <a href="<?= base_url('calendario') ?>" class="btn btn-light" style="background-color: #e2e6eb; border: 1px solid #dcdcdc; border-radius: 4px; font-size: 0.8rem; color: #495057;">
+                            Ver calendario de reservas
+                        </a>
+                    </div>
+                    
+                   
+                        <a href="#" class="btn btn-light btn-sm" style="background-color: #e2e6eb; border: 1px solid #dcdcdc; border-radius: 4px; font-size: 0.75rem; color: #495057; padding: 0.2rem 0.6rem;">
+                            Aviso de Cookies
+                        </a>
                     </div>
                 </form>
-
-                <div class="pt-4 mt-3 border-top text-start">
-                    <h6 style="font-size: 0.95rem; font-weight: 600; color: #212529; margin-bottom: 12px;">Algunos cursos permiten el acceso de invitados</h6>
-                    <a href="/calendario" class="btn btn-secondary btn-sm" style="background-color: #ced4da; color: #495057; border: none; border-radius: 4px; font-size: 0.85rem; padding: 6px 14px; text-decoration: none; display: inline-block;">Entrar como persona invitada</a>
-                </div>
 
             </div>
         </div>
