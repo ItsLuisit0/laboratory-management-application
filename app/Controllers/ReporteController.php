@@ -94,9 +94,20 @@ class ReporteController extends BaseController
         // Log the report
         $this->reporteModel->registrarReporte($user['id'], 'reservas', $filters);
 
-        // Stream the PDF
+        // Limpiar cualquier output buffer activo (evita conflictos de headers con CI4)
+        while (ob_get_level() > 0) {
+            ob_end_clean();
+        }
+
         $archivo = 'reporte_' . date('Ymd_His') . '.pdf';
-        $dompdf->stream($archivo, ['Attachment' => false]);
+        $pdfContent = $dompdf->output();
+
+        header('Content-Type: application/pdf');
+        header('Content-Disposition: attachment; filename="' . $archivo . '"');
+        header('Content-Length: ' . strlen($pdfContent));
+        header('Cache-Control: private, max-age=0, must-revalidate');
+        header('Pragma: public');
+        echo $pdfContent;
         exit;
     }
 
